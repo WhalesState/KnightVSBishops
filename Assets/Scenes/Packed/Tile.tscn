@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Sprites/WhiteTile.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Scripts/Tile.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[node name="Tile" type="Area2D"]
+script = ExtResource( 4 )
+
+[node name="Button" type="TouchScreenButton" parent="."]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+normal = ExtResource( 2 )
+shape = SubResource( 1 )
+shape_visible = false
+
+[node name="ColTile" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 16, 16 )
+shape = SubResource( 2 )
+one_way_collision_margin = 0.0
+[connection signal="pressed" from="Button" to="." method="_on_TouchScreenButton_pressed"]
